@@ -7,14 +7,21 @@ import (
 )
 
 var (
+
+	// providers
 	aws   bool
 	azure bool
 
+	// config values
 	file string
 	t1   string
 	t2   string
 	zone string
+	oif  string
 	cidr string
+
+	// generic
+	comments bool
 )
 
 func main() {
@@ -27,8 +34,8 @@ func main() {
 
 	app.Commands = []cli.Command{
 		{
-			Name:  "netscreen",
-			Usage: "use when dealing with netscreen configuration",
+			Name:  "screenos",
+			Usage: "use when dealing with ScreenOS configuration",
 			Flags: []cli.Flag{
 				cli.BoolFlag{
 					Name:        "aws",
@@ -51,22 +58,27 @@ func main() {
 					Destination: &t2,
 				},
 				cli.StringFlag{
-					Name:        "zone, z",
+					Name:        "zone",
 					Usage:       "use to specify which zone these interfaces should be bound to",
 					Destination: &zone,
 				},
 				cli.StringFlag{
 					Name:        "outgoing_interface, outgoingif, oif",
 					Usage:       "use to specify the outgoing interface for the vpn",
-					Destination: &zone,
+					Destination: &oif,
 				},
 				cli.StringFlag{
 					Name:        "cidr",
 					Usage:       "use to specify the cidr network address to use for routing over the vpn tunnel",
 					Destination: &cidr,
 				},
+				cli.BoolFlag{
+					Name:        "nocomments, nc",
+					Usage:       "Use if you want all comments stripped from the output",
+					Destination: &comments,
+				},
 			},
-			Action: doNetscreen,
+			Action: TransformScreenOSConfig,
 		},
 		{
 			Name:  "junos",
@@ -78,7 +90,7 @@ func main() {
 					Destination: &aws,
 				},
 			},
-			Action: doJunos,
+			Action: TransformJunOSConfig,
 		},
 	}
 
