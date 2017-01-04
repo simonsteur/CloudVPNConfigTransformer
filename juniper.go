@@ -15,7 +15,23 @@ func TransformScreenOSConfig(c *cli.Context) error {
 
 	input, err := ioutil.ReadFile(file)
 	if err != nil {
-		fmt.Println("fucked upppp")
+		handleError(err)
+	}
+
+	if t1 == "" {
+		handleWarning("no new value given for tunnel interface 1, using default values")
+	}
+	if t2 == "" {
+		handleWarning("no new value given for tunnel interface 2, using default values")
+	}
+	if zone == "" {
+		handleWarning("no new value given for internal zone, using default values")
+	}
+	if cidr == "" {
+		handleWarning("no new value given for cidr, using default values")
+	}
+	if external_if == "" {
+		handleWarning("no new value given for the external interface, using default values")
 	}
 
 	r := strings.NewReplacer(
@@ -45,7 +61,7 @@ func TransformScreenOSConfig(c *cli.Context) error {
 func TransformJunOSConfig(c *cli.Context) error {
 	input, err := ioutil.ReadFile(file)
 	if err != nil {
-		fmt.Println("fucked upppp")
+		handleError(err)
 	}
 
 	r := strings.NewReplacer(
