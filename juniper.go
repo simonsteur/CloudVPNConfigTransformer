@@ -18,21 +18,13 @@ func TransformScreenOSConfig(c *cli.Context) error {
 		handleError(err)
 	}
 
-	if t1 == "" {
-		handleWarning("no new value given for tunnel interface 1, using default values")
-	}
-	if t2 == "" {
-		handleWarning("no new value given for tunnel interface 2, using default values")
-	}
-	if zone == "" {
-		handleWarning("no new value given for internal zone, using default values")
-	}
-	if cidr == "" {
-		handleWarning("no new value given for cidr, using default values")
-	}
-	if external_if == "" {
-		handleWarning("no new value given for the external interface, using default values")
-	}
+	values := make(map[string]string)
+	values["tunnel_interface_1"] = t1
+	values["tunnel_interface_2"] = t1
+	values["internal_zone"] = zone
+	values["cidr"] = cidr
+	values["external_interface"] = external_if
+	checkValueWarnings(values)
 
 	r := strings.NewReplacer(
 		"tunnel.1", t1,
@@ -63,6 +55,15 @@ func TransformJunOSConfig(c *cli.Context) error {
 	if err != nil {
 		handleError(err)
 	}
+
+	values := make(map[string]string)
+	values["tunnel_interface_1"] = t1
+	values["tunnel_interface_2"] = t1
+	values["internal_zone"] = zone
+	values["external_zone"] = zone
+	values["cidr"] = cidr
+	values["external_interface"] = external_if
+	checkValueWarnings(values)
 
 	r := strings.NewReplacer(
 		"st0.1", t1,
