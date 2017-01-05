@@ -14,8 +14,12 @@ cvct screenos --file <path to generated config> --if1 <1st tunnel interface> --i
 ```
 #Help
 Each command has a help function to use just use the `-h` flag
+
 ```bash
 cvct -h
+```
+
+```bash
 
 NAME:
    cvct - transform generated vpn configuration from cloud providers to represent your environment
