@@ -37,7 +37,7 @@ func TransformScreenOSConfig(c *cli.Context) error {
 	VpnConfig := r.Replace(string(input))
 
 	if comments == true {
-		regex := regexp.MustCompile("(?m)[\r\n]+^.*#.*$")
+		regex := regexp.MustCompile("(?m)[\r\n]*.*#.*$")
 		output := regex.ReplaceAllString(VpnConfig, "")
 		fmt.Println(output)
 	} else {
@@ -77,7 +77,7 @@ func TransformJunOSConfig(c *cli.Context) error {
 	VpnConfig := r.Replace(string(input))
 
 	if comments == true {
-		regex := regexp.MustCompile("(?m)[\r\n]+^.*#.*$")
+		regex := regexp.MustCompile("(?m)[\r\n]*.*#.*$")
 		output := regex.ReplaceAllString(VpnConfig, "")
 		fmt.Println(output)
 	} else {

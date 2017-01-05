@@ -15,7 +15,6 @@ func handleError(err error) {
 func handleWarning(warning string) {
 
 	color.Yellow("Warning: %s", warning)
-
 }
 
 func checkValueWarnings(values map[string]string) {
