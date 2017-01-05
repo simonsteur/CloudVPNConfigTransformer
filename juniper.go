@@ -4,11 +4,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"regexp"
+	"strings"
 
 	"github.com/urfave/cli"
 )
-
-import "strings"
 
 // TransformScreenOSConfig transforms the ScreenOS configuration to the desired values
 func TransformScreenOSConfig(c *cli.Context) error {
@@ -23,7 +22,7 @@ func TransformScreenOSConfig(c *cli.Context) error {
 	values["tunnel_interface_2"] = t1
 	values["internal_zone"] = zone
 	values["cidr"] = cidr
-	values["external_interface"] = external_if
+	values["external_interface"] = externalif
 	checkValueWarnings(values)
 
 	r := strings.NewReplacer(
@@ -31,7 +30,7 @@ func TransformScreenOSConfig(c *cli.Context) error {
 		"tunnel.2", t2,
 		"Trust", zone,
 		"10.0.0.0/16", cidr,
-		"ethernet0/0", external_if,
+		"ethernet0/0", externalif,
 		"# set route", "set route",
 	)
 
@@ -62,16 +61,16 @@ func TransformJunOSConfig(c *cli.Context) error {
 	values["internal_zone"] = zone
 	values["external_zone"] = zone
 	values["cidr"] = cidr
-	values["external_interface"] = external_if
+	values["external_interface"] = externalif
 	checkValueWarnings(values)
 
 	r := strings.NewReplacer(
 		"st0.1", t1,
 		"st0.2", t2,
 		"Trust", zone,
-		"Untrust", external_zone,
+		"Untrust", externalzone,
 		"10.0.0.0/16", cidr,
-		"ge-0/0/0.0", external_if,
+		"ge-0/0/0.0", externalif,
 		"# set routing-options", "set routing-options",
 	)
 

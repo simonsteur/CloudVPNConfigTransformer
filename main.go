@@ -13,13 +13,13 @@ var (
 	azure bool
 
 	// config values
-	file          string
-	t1            string
-	t2            string
-	zone          string
-	external_if   string
-	cidr          string
-	external_zone string
+	file         string
+	t1           string
+	t2           string
+	zone         string
+	externalif   string
+	cidr         string
+	externalzone string
 
 	// generic
 	comments bool
@@ -45,37 +45,37 @@ func main() {
 				},
 				cli.StringFlag{
 					Name:        "file, f",
-					Usage:       "use to specify the location of the file holding the generated vpn configuration",
+					Usage:       "The generated configuration file",
 					Destination: &file,
 				},
 				cli.StringFlag{
 					Name:        "tunnel_interface_1, if1",
-					Usage:       "use to specify which tunnel interface should be used for Tunnel 1",
+					Usage:       "Tunnel interface for Tunnel 1",
 					Destination: &t1,
 				},
 				cli.StringFlag{
 					Name:        "tunnel_interface_2, íf2",
-					Usage:       "use to specify which tunnel interface should be used for Tunnel 2",
+					Usage:       "Tunnel interface for Tunnel 2",
 					Destination: &t2,
 				},
 				cli.StringFlag{
-					Name:        "zone",
-					Usage:       "use to specify which zone these interfaces should be bound to",
+					Name:        "zone, internal_zone",
+					Usage:       "The zone which the tunnel interfaces should be bound to",
 					Destination: &zone,
 				},
 				cli.StringFlag{
 					Name:        "outgoing_interface, external_if, eif",
-					Usage:       "use to specify the outgoing interface for the vpn",
-					Destination: &external_if,
+					Usage:       "The external interface for your tunnel",
+					Destination: &externalif,
 				},
 				cli.StringFlag{
 					Name:        "cidr",
-					Usage:       "use to specify the cidr network address to use for routing over the vpn tunnel",
+					Usage:       "The network address you wish to route over the tunnel",
 					Destination: &cidr,
 				},
 				cli.BoolFlag{
 					Name:        "nocomments, nc",
-					Usage:       "Use if you want all comments stripped from the output",
+					Usage:       "Strips all comments from output",
 					Destination: &comments,
 				},
 			},
@@ -92,42 +92,42 @@ func main() {
 				},
 				cli.StringFlag{
 					Name:        "file, f",
-					Usage:       "use to specify the location of the file holding the generated vpn configuration",
+					Usage:       "The generated configuration file",
 					Destination: &file,
 				},
 				cli.StringFlag{
 					Name:        "tunnel_interface_1, if1",
-					Usage:       "use to specify which tunnel interface should be used for Tunnel 1",
+					Usage:       "Tunnel interface for Tunnel 1",
 					Destination: &t1,
 				},
 				cli.StringFlag{
 					Name:        "tunnel_interface_2, íf2",
-					Usage:       "use to specify which tunnel interface should be used for Tunnel 2",
+					Usage:       "Tunnel interface for Tunnel 2",
 					Destination: &t2,
 				},
 				cli.StringFlag{
-					Name:        "zone",
-					Usage:       "use to specify which zone these interfaces should be bound to",
+					Name:        "zone, internal_zone",
+					Usage:       "The zone which the tunnel interfaces should be bound to",
 					Destination: &zone,
 				},
 				cli.StringFlag{
 					Name:        "external_zone, untrust_zone",
 					Usage:       "The zone which protects the external interfaces",
-					Destination: &zone,
+					Destination: &externalzone,
 				},
 				cli.StringFlag{
 					Name:        "outgoing_interface, external_if, eif",
-					Usage:       "use to specify the external interface for the vpn",
-					Destination: &external_if,
+					Usage:       "The external interface for your tunnel",
+					Destination: &externalif,
 				},
 				cli.StringFlag{
 					Name:        "cidr",
-					Usage:       "use to specify the cidr network address to use for routing over the vpn tunnel",
+					Usage:       "The network address you wish to route over the tunnel",
 					Destination: &cidr,
 				},
 				cli.BoolFlag{
 					Name:        "nocomments, nc",
-					Usage:       "Use if you want all comments stripped from the output",
+					Usage:       "Strips all comments from output",
 					Destination: &comments,
 				},
 			},
