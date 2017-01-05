@@ -7,5 +7,13 @@ The idea comes from a time when I was working for a company that was starting to
 #Use 
 Download the version for your platform, add it to your path. After that you can run "cvct" to test out if everything is working.
 
+
 #Example
-`cvct screenos --file <path to generated config> --if1 <1st tunnel interface> --if2 <2nd tunnel interface> --zone <zone to bind the tunnel interfaces to> --eif <external interface for vpn> --cidr <network range for routing> --nc`
+```bash
+cvct screenos --file <path to generated config> --if1 <1st tunnel interface> --if2 <2nd tunnel interface> --zone <zone to bind the tunnel interfaces to> --eif <external interface for vpn> --cidr <network range for routing> --nc
+```
+#Help
+Each command has a help function to use just use the `-h` flag
+```bash
+cvct -h
+```
