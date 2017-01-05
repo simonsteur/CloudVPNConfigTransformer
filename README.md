@@ -16,4 +16,23 @@ cvct screenos --file <path to generated config> --if1 <1st tunnel interface> --i
 Each command has a help function to use just use the `-h` flag
 ```bash
 cvct -h
+
+NAME:
+   cvct - transform generated vpn configuration from cloud providers to represent your environment
+
+USAGE:
+   cvct [global options] command [command options] [arguments...]
+
+VERSION:
+   0.1
+
+COMMANDS:
+     screenos  use when dealing with ScreenOS configuration
+     junos     use when dealing with junos configuration
+     help, h   Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h     show help
+   --version, -v  print the version
+
 ```
