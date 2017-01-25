@@ -1,6 +1,9 @@
 # CloudVPNConfigTransformer
 CVCT is a tool that takes the generated vpn configuration from your cloud provider and allows you to transform it to your environment.
 
+#Limitations
+Currently only supports aws vpn configuration for junOS and screenOS
+
 #Use 
 Download the version for your platform, add it to your path. After that you can run "cvct" to test out if everything is working.
 
